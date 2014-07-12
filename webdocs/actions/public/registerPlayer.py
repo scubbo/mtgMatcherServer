@@ -32,7 +32,8 @@ def main():
             existingPlayer = c.execute("SELECT * FROM players WHERE regId=?", (rid,)).next()
 
             response = {
-                'status':'error',
+                'status':'failure',
+                'code':'alreadyRegistered',
                 'message':'already registered',
                 'data': {
                     'name':existingPlayer['name'],
