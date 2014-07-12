@@ -1,0 +1,19 @@
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+Hi there.
+
+<table id='players'>
+    <tr>
+        <th>dciNumber</th>
+        <th>name</th>
+    </tr>
+</table>
+
+<script>
+    $.post('/actions/private/getPlayers.py', function(data) {
+        $.each(data, function(index, value) {
+            console.log(value);
+            $('#players').append('<tr x-data-regId="' + value['regId'] + '"><td>' + value['dciNumber'] + '</td><td>' + value['name'] + '</td></tr>');
+        });
+    });
+</script>
