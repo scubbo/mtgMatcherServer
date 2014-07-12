@@ -46,14 +46,14 @@ def main():
     if 'message' not in form:
         response = {
             'status':'failure',
-            'reason':'request did not contain required field "message"
+            'reason':'request did not contain required field "message"'
         }
         print json.dumps(response)
         return
 
     response = {
         'status':'success',
-        'data':buildRequest(regIds, message)
+        'data':buildRequest(regIds, form['message'].value)
     }
 
     print json.dumps(response)
