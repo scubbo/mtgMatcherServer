@@ -4,7 +4,7 @@ import cgi
 import json
 
 sendURL = 'https://android.googleapis.com/gcm/send'
-with file('../../../apiKey','r') as f:
+with file('../apiKey','r') as f:
     apiKey = f.read().rstrip()
 
 def buildRequest(regIds, message):

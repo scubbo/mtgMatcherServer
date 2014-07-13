@@ -24,7 +24,7 @@ def main():
             print json.dumps(response)
             return
 
-    with sqlite3.connect('../../../data.db') as conn:
+    with sqlite3.connect('../data.db') as conn:
         conn.row_factory = sqlite3.Row
         c = conn.cursor()
 

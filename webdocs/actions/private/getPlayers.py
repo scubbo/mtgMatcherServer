@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 import json
 import sqlite3
 
@@ -6,7 +6,7 @@ print 'Content-type: application/json'
 print
 
 def main():
-    with sqlite3.connect('../../../data.db') as conn:
+    with sqlite3.connect('../data.db') as conn:
         conn.row_factory = sqlite3.Row
         c = conn.cursor()
 
