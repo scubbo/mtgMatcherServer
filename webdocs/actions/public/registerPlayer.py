@@ -2,6 +2,7 @@
 import cgi
 import json
 import sqlite3
+import datetime
 
 import cgitb
 cgitb.enable()
@@ -45,7 +46,7 @@ def main():
         except StopIteration:
 
             secretToken = generateSecretToken()
-            c.execute("INSERT INTO players VALUES (?,?,?,?)", (form['name'].value, form['dciNumber'].value, form['regId'].value, secretToken))
+            c.execute("INSERT INTO players VALUES (?,?,?,?,?)", (form['name'].value, form['dciNumber'].value, form['regId'].value, secretToken, datetime.datetime.now()))
 
             conn.commit()
             id = c.execute('select count(*) from players').fetchone()[0]
