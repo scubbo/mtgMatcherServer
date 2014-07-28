@@ -1,14 +1,24 @@
 #!/usr/bin/env python
+import argparse
 
 import BaseHTTPServer
 import CGIHTTPServer
-import cgitb;
+import cgitb
 
 cgitb.enable()  # Error reporting
 
+import os, sys
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + os.path.sep + os.path.pardir + os.path.sep + 'customServer')
+
+import ExtendedCGIHTTPServer
+
+parser = argparse.ArgumentParser(description="Start the server for mtgMatcher")
+parser.add_argument('--port', default=2020, type=int)
+args = parser.parse_args()
+
 server = BaseHTTPServer.HTTPServer
-handler = CGIHTTPServer.CGIHTTPRequestHandler
-server_address = ("", 8000)
+handler = ExtendedCGIHTTPServer.ExtendedCGIHTTPRequestHandler
+server_address = ("", args.port)
 handler.cgi_directories = ["/actions"]
 
 httpd = server(server_address, handler)
