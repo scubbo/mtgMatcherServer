@@ -2,8 +2,9 @@
 import requests
 import cgi
 import json
+import os
 
-sendURL = 'https://android.googleapis.com/gcm/send'
+sendURL = os.environ['gcmUrl']
 with file('../apiKey','r') as f:
     apiKey = f.read().rstrip()
 
